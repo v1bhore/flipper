@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FaTrash, FaPlus } from 'react-icons/fa';
 import SpaceCity from "./assets/SpaceCity.jpg";
 import axios from 'axios'; // Make sure to install axios via npm or yarn
+import tufbackground from './assets/tufbackground.png'
+
 
 const ManageSlidesPage = () => {
     const [slides, setSlides] = useState([]);
@@ -43,11 +45,11 @@ const ManageSlidesPage = () => {
 
     return (
         <div className="flex flex-col lg:flex-row h-screen p-4"
-            style={{ backgroundImage: `url(${SpaceCity})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+            style={{ backgroundImage: `url(${tufbackground})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
             {/* Delete Section */}
-            <div className="w-full lg:w-[30%] h-full bg-white shadow-md rounded p-4 mb-4 mx-6 lg:mb-0 bg-transparent">
-                <h2 className="text-3xl font-bold mb-4 text-gray-900">Uploaded Slides</h2>
+            <div className="w-full lg:w-[30%] h-full h-[70vh] scroll-y-auto absolute bottom-5 left-4 shadow-md rounded p-4 mb-4 mx-6 lg:mb-0 ">
+                <h2 className="text-3xl font-bold mb-4 text-white">Uploaded Slides</h2>
                 <div className="overflow-y-auto h-[90%] space-y-2">
                     {slides.map(item => (
                         <div key={item.id} className="flex justify-between items-center p-2 bg-gray-200 rounded">
@@ -67,11 +69,11 @@ const ManageSlidesPage = () => {
             </div>
 
             {/* Add Section */}
-            <div className="w-full lg:w-[70%] h-full rounded p-4 flex flex-col justify-between bg-transparent">
+            <div className="w-full lg:w-[60%] h-[90vh] absolute top-5 right-4 rounded p-4 flex flex-col justify-between bg-transparent">
                 <div>
-                    <h2 className="text-3xl font-bold mb-4 text-gray-900">Add New Slide</h2>
+                    <h2 className="text-3xl font-bold mb-4 text-white">Add New Slide</h2>
                     <div className="mb-4">
-                        <label htmlFor="question" className="block text-sm font-medium text-gray-700">Question</label>
+                        <label htmlFor="question" className="block text-sm font-medium text-special-orange">Question</label>
                         <textarea
                             id="question"
                             rows="2"
@@ -82,11 +84,11 @@ const ManageSlidesPage = () => {
                         />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="answer" className="block text-sm font-medium text-gray-700">Answer</label>
+                        <label htmlFor="answer" className="block text-sm font-medium text-special-orange">Answer</label>
                         <textarea
                             id="answer"
                             rows="6"
-                            className="w-full p-2 mt-1 border rounded focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full p-2 mt-1 border rounded-lg border-4 border-special-orange focus:border-special-orange"
                             placeholder="Enter the answer"
                             value={answer}
                             onChange={(e) => setAnswer(e.target.value)}

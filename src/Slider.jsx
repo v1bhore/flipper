@@ -8,7 +8,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
 
-import SpaceCity from "./assets/SpaceCity.jpg";
+import tufbackground from './assets/tufbackground.png'
+
 
 import { FreeMode, Navigation } from "swiper/modules";
 import { RxArrowTopRight } from "react-icons/rx";
@@ -61,15 +62,13 @@ const ActiveSlider = () => {
 
     return (
         <div className="relative flex items-center justify-center flex-col h-[100vh] py-8"
-            style={{ backgroundImage: `url(${SpaceCity})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+            style={{ backgroundImage: `url(${tufbackground})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
-            <div className="absolute top-4 left-4 bg-white text-black py-2 px-4 rounded shadow-md">
-                Score: {score}
-            </div>
+            
 
             <button
                 onClick={handleManageSlidesClick}
-                className="absolute top-4 right-4 bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700"
+                className="absolute top-4 right-4 bg-special-orange text-white py-2 px-4 rounded "
             >
                 Manage Slides
             </button>
@@ -102,11 +101,14 @@ const ActiveSlider = () => {
                             >
                                 {/* Front Side */}
                                 <div
-                                    className="absolute inset-0 flex flex-col justify-center items-center gap-4 group text-white rounded-xl px-6 py-8 h-full w-full"
+                                    className="absolute inset-0 flex flex-col justify-center items-center gap-4 group text-white rounded-xl px-6 py-8 h-full w-full border-special-orange  "
                                     style={{
                                         backfaceVisibility: "hidden",
                                         transform: "rotateY(0deg)",
                                         backgroundColor: "rgba(0, 0, 0, 0.7)",
+                                        borderWidth: "4px",
+                                        borderColor: "#EE5334", // Replace with your desired orange color
+                                        borderStyle: "solid",
                                     }}
                                 >
                                     <div
@@ -123,7 +125,7 @@ const ActiveSlider = () => {
                                                     id={`answer-input-${index}`}
                                                 />
                                                 <button
-                                                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                                                    className="bg-special-orange text-white py-2 px-4 rounded "
                                                     onClick={() => handleSubmit(index, document.getElementById(`answer-input-${index}`).value)}
                                                 >
                                                     Submit
@@ -131,13 +133,13 @@ const ActiveSlider = () => {
                                             </div>
                                         )}
                                     </div>
-                                    <RxArrowTopRight className="absolute bottom-5 right-5 w-[35px] h-[35px] text-white group-hover:text-blue-500 group-hover:rotate-45 duration-100" />
+
                                 </div>
 
                                 {/* Back Side */}
                                 <div
                                     className={`absolute inset-0 flex flex-col justify-center items-center text-center text-lg p-4 rounded-xl h-full w-full ${
-                                        submittedAnswers[index]?.isCorrect ? 'bg-green-100 text-black' : 'bg-red-100 text-black'
+                                        submittedAnswers[index]?.isCorrect ? 'bg-black opacity-70 border-green-900 border-4 text-white' : 'bg-black text-white border-special-orange border-4 opacity-70'
                                     }`}
                                     style={{
                                         backfaceVisibility: "hidden",
@@ -159,6 +161,9 @@ const ActiveSlider = () => {
                     </SwiperSlide>
                 ))}
             </Swiper>
+            <div className="bg-special-orange text-white py-2 px-4 mt-8 rounded shadow-md">
+                Score: {score}
+            </div>
             <div className="flex justify-between w-full lg:max-w-[70%] px-6 mt-8">
                 <button className="swiper-button-prev bg-white text-gray-800 py-8 lg:px-6 p-4 rounded hover:bg-gray-200">
                     <FaArrowLeft size={24} />
