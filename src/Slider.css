@@ -1,0 +1,5 @@
+.swiper-button-prev,
+.swiper-button-next {
+    color: #EE5334; /* Change the color of navigation arrows */
+    background-color: transparent; /* Ensure background is transparent */
+}

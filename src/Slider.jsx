@@ -7,7 +7,7 @@ import axios from 'axios'; // Make sure to install axios via npm or yarn
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
-
+import "./Slider.css"
 import tufbackground from './assets/tufbackground.png'
 
 
@@ -117,11 +117,11 @@ const ActiveSlider = () => {
                                     <div className="relative flex flex-col gap-3 items-center text-center ">
                                         <p className="lg:text-[20px]">{item.question}</p>
                                         {!submittedAnswers[index] && (
-                                            <div className="mt-20 flex flex-col gap-3">
+                                            <div className="mt-20 flex flex-col gap-3 ">
                                                 <input
                                                     type="text"
                                                     placeholder="Enter your answer"
-                                                    className="p-2 rounded bg-white text-black"
+                                                    className="p-2 rounded bg-white focus:outline-none  text-black"
                                                     id={`answer-input-${index}`}
                                                 />
                                                 <button
@@ -165,11 +165,11 @@ const ActiveSlider = () => {
                 Score: {score}
             </div>
             <div className="flex justify-between w-full lg:max-w-[70%] px-6 mt-8">
-                <button className="swiper-button-prev bg-white text-gray-800 py-8 lg:px-6 p-4 rounded hover:bg-gray-200">
-                    <FaArrowLeft size={24} />
+                <button className="swiper-button-prev bg-transparent text-gray-800 py-8 lg:px-6 p-4 rounded ">
+                    <FaArrowLeft size={24} style={{ color: '#EE5334' }} />
                 </button>
-                <button className="swiper-button-next bg-white text-gray-800 py-8 lg:px-6 p-4 rounded hover:bg-gray-200">
-                    <FaArrowRight size={24} />
+                <button className="swiper-button-next bg-transparent text-gray-800 py-8 lg:px-6 p-4 rounded ">
+                    <FaArrowRight size={24} color='#EE5334'/>
                 </button>
             </div>
         </div>

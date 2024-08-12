@@ -3,6 +3,7 @@ import { FaTrash, FaPlus } from 'react-icons/fa';
 import SpaceCity from "./assets/SpaceCity.jpg";
 import axios from 'axios'; // Make sure to install axios via npm or yarn
 import tufbackground from './assets/tufbackground.png'
+import { useNavigate } from 'react-router-dom';
 
 
 const ManageSlidesPage = () => {
@@ -42,17 +43,19 @@ const ManageSlidesPage = () => {
             console.error('Error adding slide:', error);
         }
     };
-
+    const navigate = useNavigate();
+   
     return (
         <div className="flex flex-col lg:flex-row h-screen p-4"
             style={{ backgroundImage: `url(${tufbackground})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
+            
             {/* Delete Section */}
-            <div className="w-full lg:w-[30%] h-full h-[70vh] scroll-y-auto absolute bottom-5 left-4 shadow-md rounded p-4 mb-4 mx-6 lg:mb-0 ">
+            <div className="w-full lg:w-[30%] h-[80vh] scroll-y-auto absolute bottom-4 left-4 shadow-md rounded p-4 mb-4 mx-6 lg:mb-0 ">
                 <h2 className="text-3xl font-bold mb-4 text-white">Uploaded Slides</h2>
-                <div className="overflow-y-auto h-[90%] space-y-2">
+                <div className="overflow-y-auto h-[55%] space-y-2">
                     {slides.map(item => (
-                        <div key={item.id} className="flex justify-between items-center p-2 bg-gray-200 rounded">
+                        <div key={item.id} className="flex justify-between items-center p-2 bg-gray-200 rounded border border-4 border-special-orange">
                             <div>
                                 <h3 className="font-medium">{item.question}</h3>
                                 <p className="text-sm text-gray-600">{item.answer}</p>
@@ -69,7 +72,7 @@ const ManageSlidesPage = () => {
             </div>
 
             {/* Add Section */}
-            <div className="w-full lg:w-[60%] h-[90vh] absolute top-5 right-4 rounded p-4 flex flex-col justify-between bg-transparent">
+            <div className="w-full lg:w-[50%] h-[90vh] absolute top-5 right-4 rounded p-4 flex flex-col justify-between bg-transparent">
                 <div>
                     <h2 className="text-3xl font-bold mb-4 text-white">Add New Slide</h2>
                     <div className="mb-4">
@@ -77,7 +80,7 @@ const ManageSlidesPage = () => {
                         <textarea
                             id="question"
                             rows="2"
-                            className="w-full p-2 mt-1 border rounded focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full p-2 mt-1 border rounded border-4 border-special-orange focus:border-special-orange focus:ring-special-orange focus:outline-none "
                             placeholder="Enter the question"
                             value={question}
                             onChange={(e) => setQuestion(e.target.value)}
@@ -88,17 +91,27 @@ const ManageSlidesPage = () => {
                         <textarea
                             id="answer"
                             rows="6"
-                            className="w-full p-2 mt-1 border rounded-lg border-4 border-special-orange focus:border-special-orange"
+                            className="w-full p-2 mt-1 border rounded-lg border-4 border-special-orange focus:border-special-orange focus:ring-special-orange focus:outline-none"
                             placeholder="Enter the answer"
                             value={answer}
                             onChange={(e) => setAnswer(e.target.value)}
                         />
                     </div>
                 </div>
-                <div className="flex justify-end">
+
+                <div className="flex justify-end space-x-4 ">
+                <button
+                        onClick={() => {
+                            navigate('/');  
+                            // This will navigate back to the previous route in history
+                            console.log("Running")}}
+                        className="bg-special-orange text-white py-2 px-4 rounded flex items-center gap-2 "
+                    >
+                        Back
+                </button>
                     <button
                         onClick={handleAdd}
-                        className="bg-blue-600 text-white py-2 px-4 rounded flex items-center gap-2 hover:bg-blue-700"
+                        className="bg-special-orange text-white py-2 px-4 rounded flex items-center gap-2 "
                     >
                         <FaPlus />
                         Add Slide
